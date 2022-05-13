@@ -6,6 +6,10 @@ public class CombatMaster : MonoBehaviour
 {
     public List<Tile> selectedTiles;
 
+    public Spell heldSpell;
+
+    public Spell[] equippedSpells = new Spell[9];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +25,11 @@ public class CombatMaster : MonoBehaviour
     public void ClearSelectedTiles()
     {
         selectedTiles.Clear();
+    }
+
+    public void PlaceSpellInPointer(int spellEquipIndex)
+    {
+        if (equippedSpells[spellEquipIndex] != null) heldSpell = equippedSpells[spellEquipIndex];
+        ClearSelectedTiles();
     }
 }

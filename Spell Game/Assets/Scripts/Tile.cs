@@ -21,9 +21,13 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cMaster.selectedTiles.Contains(this))
+        if (cMaster.selectedTiles.Contains(this) && cMaster.heldSpell != null)
         {
-            GetComponent<SpriteRenderer>().color = Color.green;
+            GetComponent<SpriteRenderer>().color = cMaster.heldSpell.color;
+
+        } else if (mouseHovering == false)
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
         if (tileObject != null)
         {
@@ -42,7 +46,7 @@ public class Tile : MonoBehaviour
     }
     private void OnMouseExit()
     {
-        mouseHovering = true;
+        mouseHovering = false;
         GetComponent<SpriteRenderer>().color = Color.white;
     }
     private void OnMouseDown()
